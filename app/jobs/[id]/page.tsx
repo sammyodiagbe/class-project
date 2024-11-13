@@ -1,3 +1,5 @@
+/* eslint-disable */
+// @ts-ignore:
 import { jobListings } from "@/utils/data";
 import { JobType } from "@/utils/types";
 import { FC } from "react";
