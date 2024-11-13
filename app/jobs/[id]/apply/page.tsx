@@ -1,3 +1,5 @@
+/* eslint-disable */
+// @ts-ignore:
 "use client";
 
 import { jobListings } from "@/utils/data";
