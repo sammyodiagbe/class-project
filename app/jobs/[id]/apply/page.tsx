@@ -21,9 +21,27 @@ const ApplyPage = ({ params }: Props) => {
     phone: "",
     coverLetter: "",
   });
+  const [errors, setErrors] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    coverLetter: "",
+  });
+
+  const validateForm = () => {
+    const newErrors = {
+      fullName: formData.fullName ? "" : "Full Name is required",
+      email: /\S+@\S+\.\S+/.test(formData.email) ? "" : "Email is invalid",
+      phone: /^\d{10}$/.test(formData.phone) ? "" : "Phone number is invalid",
+      coverLetter: formData.coverLetter ? "" : "Cover Letter is required",
+    };
+    setErrors(newErrors);
+    return Object.values(newErrors).every((error) => error === "");
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!validateForm()) return;
     setIsSubmitting(true);
 
     // Mock API call
@@ -39,6 +57,10 @@ const ApplyPage = ({ params }: Props) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+    setErrors({
+      ...errors,
+      [e.target.name]: "",
     });
   };
 
@@ -64,6 +86,9 @@ const ApplyPage = ({ params }: Props) => {
                 value={formData.fullName}
                 onChange={handleChange}
               />
+              {errors.fullName && (
+                <p className="text-red-500 text-sm">{errors.fullName}</p>
+              )}
             </div>
 
             <div>
@@ -82,6 +107,9 @@ const ApplyPage = ({ params }: Props) => {
                 value={formData.email}
                 onChange={handleChange}
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm">{errors.email}</p>
+              )}
             </div>
 
             <div>
@@ -100,6 +128,9 @@ const ApplyPage = ({ params }: Props) => {
                 value={formData.phone}
                 onChange={handleChange}
               />
+              {errors.phone && (
+                <p className="text-red-500 text-sm">{errors.phone}</p>
+              )}
             </div>
 
             <div>
@@ -118,6 +149,9 @@ const ApplyPage = ({ params }: Props) => {
                 value={formData.coverLetter}
                 onChange={handleChange}
               />
+              {errors.coverLetter && (
+                <p className="text-red-500 text-sm">{errors.coverLetter}</p>
+              )}
             </div>
           </div>
 
