@@ -7,4 +7,5 @@ export interface JobType {
   employmentType: string;
   city: string;
   id?: number;
+  jobType?: string;
 }

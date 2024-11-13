@@ -11,7 +11,7 @@ const Navbar = () => {
 
         <ul className="flex gap-2 align-middle">
           <li>
-            <Link href={"/find-job"} className={"text-sm"}>
+            <Link href={"/"} className={"text-sm"}>
               Find a job
             </Link>
           </li>

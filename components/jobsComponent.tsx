@@ -47,7 +47,7 @@ const Job: FC<{ data: JobType }> = ({ data }) => {
 
         <div>
           <Link href={`/jobs/${id}`}>
-            <button className="p-2 font-bold text-xs rounded-md bg-green-500 text-white">
+            <button className="p-2 font-bold text-xs rounded-md bg-green-500 hover:bg-green-600 transition-colors text-white">
               Apply Now
             </button>
           </Link>
